@@ -11,68 +11,160 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+import { useState } from "react";
+import axios from "axios";
+import SearchBar from "../components/SearchBar";
+import RecipeCard from "../components/RecipeCard";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import Link from "next/link";
+
+type Recipe = {
+  idMeal: string;
+  strMeal: string;
+  strMealThumb: string;
+};
+
 export default function Home() {
+  // STATE
+  const [loading, setLoading] = useState(false);
+  const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  // FUNCTION TO FETCH RECIPES
+  const fetchRecipes = (query: string) => {
+    console.log("Calling API...");
+    setLoading(true);
+
+    axios
+    .get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`)
+    .then((response) => {
+      if (!response.data.meals) {
+        setRecipes([]);
+        setError("No recipes found 😢");
+      } else {
+        setRecipes(response.data.meals);
+        setError(null);
+      }
+
+      setLoading(false);
+    })
+    .catch((error) => {
+      console.log("Error occurred:", error);
+      setError("Couldn't fetch recipes, try again later!!");
+      setLoading(false);
+    });
+  };
+
   return (
-    <div
-      className={`${geistSans.className} ${geistMono.className} flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black`}
-    >
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the index.tsx file.
+    <div className="bg-[#f5f0e6]">
+      <Header />
+      {/*  HERO (MealMate Theme) */}
+      <div
+        className="relative h-112.5 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1490645935967-10de6ba17061')",
+        }}
+      >
+        <div className="absolute inset-0 bg-[#3b2a1a]/60"></div>
+
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+          <h1 className="text-4xl font-bold text-white">
+            Welcome to MealMate 🍽️
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="mt-3 text-[#e6cfa7] max-w-xl">
+            Discover recipes based on ingredients you already have.
+            Cooking made simple and fun!
           </p>
+
+          <button className="mt-4 bg-[#a67c52] text-white px-5 py-2 rounded">
+            Explore Recipes
+          </button>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs/pages/getting-started?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </div>
+
+      {/*  SEARCH */}
+      <div className="flex justify-center mt-8">
+        <SearchBar setSearch={fetchRecipes} />
+      </div>
+
+      {/* ERROR */}
+      {error && (
+        <p className="text-center text-red-500 mt-4">{error}</p>
+      )}
+
+      {/*  FEATURED RECIPES */}
+      <h2 className="text-3xl text-center font-bold text-[#3b2a1a] mt-10">
+        Featured Recipes
+      </h2>
+
+      {recipes.length === 0 ? (
+        <p className="text-center mt-4 text-gray-600">
+          Search for recipes to get started 👆
+        </p>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-10 py-6">
+          {recipes.map((item) => (
+            <div
+              key={item.idMeal}
+              className="bg-[#efe6d8] p-6 rounded-lg text-center shadow"
+            >
+              <img
+                src={item.strMealThumb}
+                className="w-64 h-64 object-cover mx-auto mb-4 rounded"
+              />
+
+              <h3 className="text-xl font-semibold text-[#3b2a1a]">
+                {item.strMeal}
+              </h3>
+
+              <button className="mt-4 bg-[#6b5b3e] text-white px-4 py-2 rounded">
+                View Recipe
+              </button>
+            </div>
+          ))}
         </div>
-      </main>
+      )}
+
+      {/*  CATEGORIES */}
+      <div className="bg-[#efe6d8] py-10 text-center">
+        <h2 className="text-2xl font-bold text-[#3b2a1a] mb-6">
+          Explore Categories
+        </h2>
+
+        <div className="flex justify-center gap-10 text-lg text-[#3b2a1a]">
+          <div>🍝 Pasta</div>
+          <div>🍗 Chicken</div>
+          <div>🥗 Healthy</div>
+          <div>🍰 Desserts</div>
+        </div>
+      </div>
+
+      {/*  ABOUT SECTION */}
+      <div className="grid md:grid-cols-2 gap-10 p-10 items-center">
+        <div>
+          <h2 className="text-2xl font-bold text-[#3b2a1a]">
+            About MealMate
+          </h2>
+
+          <p className="mt-4 text-gray-700">
+            MealMate helps you find recipes quickly using ingredients
+            you already have. It saves time and makes cooking enjoyable.
+          </p>
+
+          <button className="mt-4 bg-[#6b5b3e] text-white px-4 py-2 rounded">
+            <Link href="/about">Learn More</Link>
+          </button>
+        </div>
+
+        <img
+          src="https://images.unsplash.com/photo-1509440159596-0249088772ff"
+          className="rounded shadow"
+        />
+      </div>
+      <Footer />
     </div>
   );
 }
