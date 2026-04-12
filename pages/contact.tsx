@@ -17,7 +17,7 @@ export default function Contact() {
                 </p>
             </div>
 
-            {/* ⭐ FORM SECTION */}
+            {/* FORM SECTION */}
             <div className="max-w-3xl mx-auto bg-white p-8 rounded shadow">
 
                 <form className="flex flex-col gap-4">
@@ -66,7 +66,7 @@ export default function Contact() {
                 </form>
             </div>
 
-            {/* ⭐ CONTACT INFO (LIKE YOUR HTML) */}
+            {/* CONTACT INFO (LIKE YOUR HTML) */}
             <div className="text-center mt-10 pb-10  bg-white p-8 rounded shadow">
                 <h3 className="text-xl font-bold text-[#6b5b3e] mb-2">Visit Us</h3>
 

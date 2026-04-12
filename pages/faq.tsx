@@ -6,7 +6,7 @@ export default function FAQ() {
     return (
         <div className="bg-[#f5f0e6] min-h-screen">
             <Header />
-            {/* ⭐ HERO / TITLE */}
+            {/*  HERO / TITLE */}
             <div className="text-center py-10">
                 <h2 className="text-3xl font-bold text-[#3b2a1a]">
                     Frequently Asked Questions
@@ -18,7 +18,7 @@ export default function FAQ() {
                 </p>
             </div>
 
-            {/* ⭐ FAQ SECTION */}
+            {/*  FAQ SECTION */}
             <div className="max-w-4xl mx-auto px-6 pb-10 space-y-6">
 
                 {/* FAQ CARD 1 */}
@@ -67,7 +67,7 @@ export default function FAQ() {
 
             </div>
 
-            {/* ⭐ CONTACT LINK SECTION */}
+            {/* CONTACT LINK SECTION */}
             <div className="bg-[#efe6d8] py-10 text-center">
                 <h3 className="text-xl font-bold text-[#6b5b3e] mb-2">
                     Still have questions?
