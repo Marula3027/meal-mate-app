@@ -3,6 +3,18 @@ MealMate– A Smart Recipe Search Web Application.
 ## Overview:
 MealMate is a web-based application that allows the user to search for recipes based on ingredients or dish names. The purpose of this application is to help users to quickly find meals they want to cook with the ingredients they have. The main objective of this project is to create an intuitive and responsive platform where users can explore recipes, view detailed cooking instructions, and save their time from the hassle of thinking how to cook their favorite meals with the available ingredients. This project will demonstrate key concepts such as component-based architecture, state management, routing, API integration, and responsive web design.
 
+## Pages project has:
+1. home page
+2. about page
+3. contact page
+4. faq page
+5. recipe detail page (dynamic route)
+
+## Components
+1. Header
+2. Footer
+3. SearchBar
+4. RecipeCard
 
 ## Core Features:
 Main Features of this application are:
@@ -39,12 +51,5 @@ Technology Stack:
 •	API: TheMealDB API (for fetching recipes, ingredients, and images)
 •	Vercel: for project deployment 
 
-## Pages project has:
-1. home page
-2. about page
-3. contact page
-4. faq page
-5. recipe detail page (dynamic route)
 
-## Styling
-The whole project is styled using tailwindcss/postcss
+
