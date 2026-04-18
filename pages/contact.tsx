@@ -20,7 +20,13 @@ export default function Contact() {
             {/* FORM SECTION */}
             <div className="max-w-3xl mx-auto bg-white p-8 rounded shadow">
 
-                <form className="flex flex-col gap-4">
+                <form className="flex flex-col gap-4"
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        alert("Your response has been sent successfully!");
+                        (e.target as HTMLFormElement).reset(); 
+                    }}
+                >
 
                     {/* NAME */}
                     <div>
