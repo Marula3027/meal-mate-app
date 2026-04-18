@@ -18,6 +18,11 @@ The app will be built using the reusable components like SearchBar, RecipeCard, 
 
 •	State Management:
 The application will use react’s state management tools such as useState to manage the dynamic data across the application. This includes storing search queries, fetch recipe results, etc.
+The below mentioned are the features created using state:
+- Search input
+- Recipe results
+- Loading state
+- Error handling
 
 •	Routing:
 React Router will be used to let the user navigate from one page to another without page reloading. The application will include multiple routes such as the Home Page, Recipe Detail Page, etc.
@@ -33,3 +38,13 @@ Technology Stack:
 •	Styling: TailwindCSS/ CSS modules
 •	API: TheMealDB API (for fetching recipes, ingredients, and images)
 •	Vercel: for project deployment 
+
+## Pages project has:
+1. home page
+2. about page
+3. contact page
+4. faq page
+5. recipe detail page (dynamic route)
+
+## Styling
+The whole project is styled using tailwindcss/postcss
