@@ -72,7 +72,7 @@ export default function Contact() {
                 </form>
             </div>
 
-            {/* CONTACT INFO (LIKE YOUR HTML) */}
+            {/* CONTACT INFO*/}
             <div className="text-center mt-10 pb-10  bg-white p-8 rounded shadow">
                 <h3 className="text-xl font-bold text-[#6b5b3e] mb-2">Visit Us</h3>
 
