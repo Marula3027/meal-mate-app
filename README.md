@@ -1,40 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+## Project Title:
+MealMate– A Smart Recipe Search Web Application.
+## Overview:
+MealMate is a web-based application that allows the user to search for recipes based on ingredients or dish names. The purpose of this application is to help users to quickly find meals they want to cook with the ingredients they have. The main objective of this project is to create an intuitive and responsive platform where users can explore recipes, view detailed cooking instructions, and save their time from the hassle of thinking how to cook their favorite meals with the available ingredients. This project will demonstrate key concepts such as component-based architecture, state management, routing, API integration, and responsive web design.
 
-## Getting Started
 
-First, run the development server:
+## Core Features:
+Main Features of this application are:
+•	Can search recipes using its name or ingredients
+•	Displays recipe result in a grid layout
+•	Avails viewing detailed recipe information (ingredients, instructions, image)
+•	The user can save their favorite recipes
+•	Responsive design for mobile and desktop
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Core concepts demonstration:
+•	Component-based Architecture:
+The app will be built using the reusable components like SearchBar, RecipeCard, RecipeList and RecipeDetails which makes it more readable and can help while debugging.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+•	State Management:
+The application will use react’s state management tools such as useState to manage the dynamic data across the application. This includes storing search queries, fetch recipe results, etc.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+•	Routing:
+React Router will be used to let the user navigate from one page to another without page reloading. The application will include multiple routes such as the Home Page, Recipe Detail Page, etc.
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+•	API Integration:
+The application will use an external API to fetch the real-time recipe data, allowing the app to retrieve recipe lists, images, ingredients, and instructions.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+•	Styling:
+The application will also have its ui to make the user experience more efficient and convenient. This will be done using styling techniques like CSS Modules.
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+Technology Stack:
+•	Front-end: React, React Router
+•	Styling: TailwindCSS/ CSS modules
+•	API: TheMealDB API (for fetching recipes, ingredients, and images)
+•	Vercel: for project deployment 
