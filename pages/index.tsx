@@ -41,7 +41,7 @@ export default function Home() {
     .then((response) => {
       if (!response.data.meals) {
         setRecipes([]);
-        setError("No recipes found 😢");
+        setError("No recipes found!!");
       } else {
         setRecipes(response.data.meals);
         setError(null);
@@ -78,16 +78,13 @@ export default function Home() {
             Discover recipes based on ingredients you already have.
             Cooking made simple and fun!
           </p>
-
-          <button className="mt-4 bg-[#a67c52] text-white px-5 py-2 rounded">
-            Explore Recipes
-          </button>
         </div>
       </div>
 
       {/*  SEARCH */}
-      <div className="flex justify-center mt-8">
+      <div className="flex flex-col justify-center mt-8">
         <SearchBar setSearch={fetchRecipes} />
+        <div>{loading && (<p className="text-center text-[#a67c52] font-medium italic font-serif ">Loading...</p>)}</div>
       </div>
 
       {/* ERROR */}
@@ -96,34 +93,23 @@ export default function Home() {
       )}
 
       {/*  FEATURED RECIPES */}
-      <h2 className="text-3xl text-center font-bold text-[#3b2a1a] mt-10">
+      <h2 className="text-4xl text-center font-bold text-[#3b2a1a] mt-10">
         Featured Recipes
       </h2>
 
-      {recipes.length === 0 ? (
-        <p className="text-center mt-4 text-gray-600">
+      {recipes.length === 0 && !loading && !error ? (
+        <p className="text-center mt-4 mb-4 text-gray-600">
           Search for recipes to get started 👆
         </p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-10 py-6">
           {recipes.map((item) => (
-            <div
+            <RecipeCard
               key={item.idMeal}
-              className="bg-[#efe6d8] p-6 rounded-lg text-center shadow"
-            >
-              <img
-                src={item.strMealThumb}
-                className="w-64 h-64 object-cover mx-auto mb-4 rounded"
-              />
-
-              <h3 className="text-xl font-semibold text-[#3b2a1a]">
-                {item.strMeal}
-              </h3>
-
-              <button className="mt-4 bg-[#6b5b3e] text-white px-4 py-2 rounded">
-                View Recipe
-              </button>
-            </div>
+              id={item.idMeal}
+              title={item.strMeal}
+              image={item.strMealThumb}
+            />
           ))}
         </div>
       )}

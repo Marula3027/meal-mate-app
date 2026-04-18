@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Link from "next/link";
 
 export default function About() {
     return (
@@ -180,8 +181,8 @@ export default function About() {
                     Start discovering meals based on what you have.
                 </p>
 
-                <button className="mt-4 bg-white text-[#6b5b3e] px-6 py-2 rounded">
-                    Start Searching
+                <button className="mt-4 bg-white text-[#6b5b3e] px-6 py-2 rounded hover:text-black">
+                    <Link href="/">Start Searching</Link>
                 </button>
             </div>
             <Footer />

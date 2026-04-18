@@ -74,7 +74,7 @@ export default function FAQ() {
                 </h3>
 
                 <p className="text-gray-700">
-                    Visit our <Link href="/contact" className="underline text-amber-950">Contact</Link> page to reach out to us anytime.
+                    Visit our <Link href="/contact" className="underline text-amber-950 hover:text-blue-700">Contact</Link> page to reach out to us anytime.
                 </p>
             </div>
             <Footer />

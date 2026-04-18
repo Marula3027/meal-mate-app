@@ -9,7 +9,13 @@ export default function SearchBar({ setSearch }: Props) {
   const [input, setInput] = useState<string>("");
 
     return (
-        <div className="flex justify-center gap-2 my-6">
+        <form
+            onSubmit={(e) => {
+                e.preventDefault(); 
+                setSearch(input);   
+            }}
+            className="flex justify-center gap-2 my-6"
+        >
             <input
                 type="text"
                 placeholder="Search recipes..."
@@ -19,11 +25,11 @@ export default function SearchBar({ setSearch }: Props) {
             />
 
             <button
-                onClick={() => setSearch(input)}
-                className="bg-[#a67c52] text-white px-4 py-2 rounded"
+                type="submit" 
+                className="bg-[#a67c52] text-white px-4 py-2 rounded hover:text-amber-950"
             >
                 Search
             </button>
-        </div>
+        </form>
     );
 }
