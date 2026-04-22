@@ -53,11 +53,10 @@ export default function RecipeDetails() {
                     <h1 className="text-3xl font-bold text-[#3b2a1a] text-center mb-6 mr-40">
                         {recipe.strMeal}
                     </h1>
-
                     {/* IMAGE */}
                     <img
                         src={recipe.strMealThumb}
-                        className="w-80 rounded mb-6 ml-55"
+                        className="w-full max-w-md mx-auto rounded mb-6"
                     />
 
                     {/* INSTRUCTIONS */}
@@ -70,9 +69,9 @@ export default function RecipeDetails() {
                     </p>
 
                     <button onClick={() => router.push("/")} 
-                        className="border rounded-xl p-4 mt-8 bg-amber-100 text-black hover:bg-amber-950 hover:text-white"
+                        className="btn border rounded-xl p-4 mt-8 bg-amber-100 text-black hover:bg-amber-950 hover:text-white"
                     >
-                        Go to home
+                        Back to home
                     </button>
 
                 </div>

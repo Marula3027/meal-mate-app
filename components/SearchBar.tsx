@@ -1,4 +1,3 @@
-"use client";
 import { useState } from "react";
 
 type Props = {
@@ -26,7 +25,7 @@ export default function SearchBar({ setSearch }: Props) {
 
             <button
                 type="submit" 
-                className="bg-[#a67c52] text-white px-4 py-2 rounded hover:text-amber-950"
+                className="bg-[#a67c52] text-white px-4 py-2 rounded hover:text-amber-950 btn"
             >
                 Search
             </button>

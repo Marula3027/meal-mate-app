@@ -1,3 +1,4 @@
+import BackToTop from "@/components/BackToTop";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
@@ -18,13 +19,13 @@ export default function Contact() {
             </div>
 
             {/* FORM SECTION */}
-            <div className="max-w-3xl mx-auto bg-white p-8 rounded shadow">
+            <div className="max-w-3xl mx-auto bg-white p-8 rounded shadow form-container">
 
                 <form className="flex flex-col gap-4"
                     onSubmit={(e) => {
                         e.preventDefault();
                         alert("Your response has been sent successfully!");
-                        (e.target as HTMLFormElement).reset(); 
+                        (e.target).reset(); 
                     }}
                 >
 
@@ -60,13 +61,13 @@ export default function Contact() {
                             placeholder="Type your message..."
                             className="w-full p-3 border rounded"
                             required
-                        >Type your message here....</textarea>
+                        />
                     </div>
 
                     {/* SUBMIT BUTTON */}
                     <button
                         type="submit"
-                        className="bg-[#6b5b3e] text-white py-3 rounded hover:bg-[#5a4a30]"
+                        className="bg-[#6b5b3e] text-white py-3 rounded hover:bg-[#5a4a30] btn"
                     > Send Message</button>
 
                 </form>
@@ -84,6 +85,7 @@ export default function Contact() {
                 </p>
             </div>
             <Footer />
+            <BackToTop />
         </div>
     );
 }

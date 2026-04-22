@@ -18,7 +18,7 @@ export default function RecipeCard({ title, image, id}: Props) {
             <h3 className="text-lg font-semibold">{title}</h3>
 
             <Link href={`/recipes/${id}`}>
-                <button className="mt-3 bg-[#a67c52] px-4 py-2 rounded hover:text-amber-950">
+                <button className="btn mt-3 bg-[#a67c52] px-4 py-2 rounded hover:text-amber-950">
                     View Recipe
                 </button>
             </Link>

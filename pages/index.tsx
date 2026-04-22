@@ -11,13 +11,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import SearchBar from "../components/SearchBar";
 import RecipeCard from "../components/RecipeCard";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import BackToTop from "@/components/BackToTop";
 
 type Recipe = {
   idMeal: string;
@@ -56,12 +57,17 @@ export default function Home() {
     });
   };
 
+  //Default recipe display
+  useEffect(() => {
+    fetchRecipes("")
+  }, []);
+
   return (
     <div className="bg-[#f5f0e6]">
       <Header />
       {/*  HERO (MealMate Theme) */}
       <div
-        className="relative h-112.5 bg-cover bg-center"
+        className="relative h-112.5 bg-cover bg-center hero-container"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1490645935967-10de6ba17061')",
@@ -69,7 +75,7 @@ export default function Home() {
       >
         <div className="absolute inset-0 bg-[#3b2a1a]/60"></div>
 
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 hero-text">
           <h1 className="text-4xl font-bold text-white">
             Welcome to MealMate 🍽️
           </h1>
@@ -84,7 +90,7 @@ export default function Home() {
       {/*  SEARCH */}
       <div className="flex flex-col justify-center mt-8">
         <SearchBar setSearch={fetchRecipes} />
-        <div>{loading && (<p className="text-center text-[#a67c52] font-medium italic font-serif ">Loading...</p>)}</div>
+        <div>{loading && (<p className="text-center text-[#a67c52] font-medium italic font-serif animate-pulse">Loading recipes...</p>)}</div>
       </div>
 
       {/* ERROR */}
@@ -102,7 +108,7 @@ export default function Home() {
           Search for recipes to get started 👆
         </p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-10 py-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-10 py-6 recipe-grid">
           {recipes.map((item) => (
             <RecipeCard
               key={item.idMeal}
@@ -151,6 +157,7 @@ export default function Home() {
         />
       </div>
       <Footer />
+      <BackToTop />
     </div>
   );
 }
