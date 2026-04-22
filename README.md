@@ -15,6 +15,7 @@ MealMate is a web-based application that allows the user to search for recipes b
 2. Footer
 3. SearchBar
 4. RecipeCard
+5. BackToTop
 
 ## Core Features:
 Main Features of this application are:
@@ -37,7 +38,7 @@ The below mentioned are the features created using state:
 - Error handling
 
 •	Routing:
-React Router will be used to let the user navigate from one page to another without page reloading. The application will include multiple routes such as the Home Page, Recipe Detail Page, etc.
+Next.js Routing will be used to let the user navigate from one page to another without page reloading. The application will include multiple routes such as the Home Page, Recipe Detail Page, etc.
 
 •	API Integration:
 The application will use an external API to fetch the real-time recipe data, allowing the app to retrieve recipe lists, images, ingredients, and instructions.
@@ -46,7 +47,7 @@ The application will use an external API to fetch the real-time recipe data, all
 The application will also have its ui to make the user experience more efficient and convenient. This will be done using styling techniques like CSS Modules.
 
 Technology Stack:
-•	Front-end: React, React Router
+•	Front-end: React, Next.js Routing
 •	Styling: TailwindCSS/ CSS modules
 •	API: TheMealDB API (for fetching recipes, ingredients, and images)
 •	Vercel: for project deployment 
