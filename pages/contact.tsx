@@ -35,6 +35,7 @@ export default function Contact() {
                         <input
                             type="text"
                             placeholder="Enter your full name"
+                            pattern="[A-Za-z\s]+"
                             className="w-full p-3 border rounded"
                             required
                         />
